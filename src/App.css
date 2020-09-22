@@ -11,6 +11,9 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+  .App-logo-f {
+    animation: App-logo-spin-f infinite 20s linear;
+  }
 }
 
 .App-header {
@@ -35,4 +38,25 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes App-logo-spin-f {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* ------------------------ */
+
+.playlist-pic {
+  height: 100px;
+  width: 100px;
+}
+
+.nav-logo {
+  height: 40px;
+  vertical-align: auto;
 }

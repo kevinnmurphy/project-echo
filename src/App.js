@@ -1,27 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import Loading from './Loading';
 import './App.css';
 
-import songsContainer from './containers/songsContainer';
+import SongsContainer from './components/songs/SongsContainer';
+import PlaylistContainer from './components/playlists/PlaylistContainer';
+
+import Iframe from './components/iframe/iframe';
+import BootstrapNavbar from './Navbar';
 
 function App() {
   return (
     <div className='App'>
+      <BootstrapNavbar />
       <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
+        <Loading />
+        <p>Select your playlist.</p>
       </header>
-      <songsContainer />
+
+      <PlaylistContainer />
+      <Iframe />
+      {/* <SongsContainer /> */}
+
+      <footer></footer>
     </div>
   );
 }
