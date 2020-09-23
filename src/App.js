@@ -1,31 +1,66 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Loading from './Loading';
+import Loading from './app/Loading';
 import './App.css';
 
-import SongsContainer from './components/songs/SongsContainer';
-import PlaylistContainer from './components/playlists/PlaylistContainer';
-
 import Iframe from './components/iframe/iframe';
-import BootstrapNavbar from './Navbar';
+import BootstrapNavbar from './app/Navbar';
+
+import { SinglePlaylistPage } from './components/playlists/SinglePlaylistPage';
+import PlaylistList from './components/playlists/PlaylistList';
+
+import Home from './routes/Home';
+import Profile from './routes/Profile';
+import Playlists from './routes/Playlists';
 
 function App() {
   return (
-    <div className='App'>
+    <Router>
       <BootstrapNavbar />
-      <header className='App-header'>
-        <Loading />
-        <p>Select your playlist.</p>
-      </header>
+      <div className='App'>
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route path='/profile'>
+            <Profile />
+          </Route>
+          <Route path='/playlists'>
+            <Playlists />
+          </Route>
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <React.Fragment>
+                <PlaylistList />
+              </React.Fragment>
+            )}
+          />
+          <Route
+            exact
+            path='/playlists/:playlistId'
+            component={SinglePlaylistPage}
+          />
 
-      <PlaylistContainer />
-      <Iframe />
-      {/* <SongsContainer /> */}
+          <header className='App-header'>
+            <Loading />
+            <p>Select your playlist.</p>
+          </header>
+          <Iframe />
+          {/* <SongsContainer /> */}
 
-      <footer></footer>
-    </div>
+          <footer></footer>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

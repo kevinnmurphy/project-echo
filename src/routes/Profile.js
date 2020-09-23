@@ -1,11 +1,17 @@
 import React from 'react';
-import Image from 'react-bootstrap/Image';
+import { useSelector } from 'react-redux/lib/hooks/useSelector';
+import UserPic from '../components/users/UserPic';
+import user from '../components/users/usersSlice';
+import pic from '../img/profile.jpg';
 
 function Profile() {
+  // const currentUser = useSelector((state) => state.users.currentUser);
   return (
     <div>
-      <h4>Profile</h4>
-      <Image src='../img/profile.jpg' roundedCircle />
+      Profile
+      <UserPic pic={pic} />
+      <h2>{user.name}</h2>
+      <p>{user.updated_at}</p>
     </div>
   );
 }

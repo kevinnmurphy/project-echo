@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
+import '../App.css';
 
-import logo from './logos/echologo.png';
+import logo from '../logos/echologo.png';
 // import logo from './logo.svg';
 
 function Loading() {

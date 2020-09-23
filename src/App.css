@@ -52,11 +52,20 @@
 /* ------------------------ */
 
 .playlist-pic {
-  height: 100px;
-  width: 100px;
+  /* height: 100px;
+  width: 100px; */
 }
 
 .nav-logo {
   height: 40px;
   vertical-align: auto;
+}
+
+.playlist-collection {
+  /* flex-wrap: wrap; */
+}
+.playlist-header {
+  display: inline-flex;
+}
+.playlist-new {
 }
