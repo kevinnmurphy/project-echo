@@ -2,11 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import selectPlaylistById from './playlistsSlice';
+
 export const SinglePlaylistPage = ({ match }) => {
   const { playlistId } = match.params;
 
   const playlist = useSelector((state) =>
-    state.playlists.find((playlist) => playlist.id === playlistId)
+    selectPlaylistById(state, playlistId)
   );
 
   if (!playlist) {

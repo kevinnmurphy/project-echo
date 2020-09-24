@@ -108,3 +108,8 @@ export const {
 } = playlistsSlice.actions;
 
 export default playlistsSlice.reducer;
+
+export const selectAllPlaylists = (state) => state.playlists;
+export const selectPlaylistById = (state, playlistId) => {
+  state.playlists.fins((playlist) => playlist.id === playlistId);
+};

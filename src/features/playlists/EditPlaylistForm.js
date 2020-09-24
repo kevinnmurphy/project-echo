@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { editPlaylist } from './playlistsSlice';
+import { editPlaylist, selectPlaylistById } from './playlistsSlice';
 
 export const EditPlaylistForm = ({ match }) => {
   const { playlistId } = match.params;
 
   const playlist = useSelector((state) =>
-    state.playlists.find((playlist) => playlist.id === playlistId)
+  selectPlaylistById(state, playlistId))
   );
 
   const [name, setName] = useState(playlist.name);

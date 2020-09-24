@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addPlaylist } from '../playlists/playlistsSlice';
+import { addPlaylist } from './playlistsSlice';
 
 export const AddPlaylistForm = () => {
   const [name, setName] = useState('');
@@ -16,7 +16,7 @@ export const AddPlaylistForm = () => {
 
   const onSavePlaylistClick = () => {
     if (name && description && pic_url) {
-      dispatch(addPlaylist(name, description, pic_url));
+      dispatch(addPlaylist({ name, description, pic_url }));
       setName('');
       setDescription('');
       setPic('');

@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux';
 import Playlist from './Playlist';
 import PlaylistCard from './PlaylistCard';
 import CardDeck from 'react-bootstrap/CardDeck';
+import { selectAllPlaylists } from './playlistsSlice';
 
 export const PlaylistList = () => {
-  const playlists = useSelector((state) => state.playlists);
+  const playlists = useSelector(selectAllPlaylists);
 
   const renderPlaylists = playlists.map((playlist) => (
     <PlaylistCard
