@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
-import PlaylistContainer from '../components/playlists/PlaylistContainer';
-import AddPlaylistForm from '../components/playlists/AddPlaylistForm';
+import PlaylistContainer from '../features/playlists/PlaylistContainer';
+import AddPlaylistForm from '../features/playlists/AddPlaylistForm';
 import { Accordion, Card } from 'react-bootstrap';
 
 function Playlists() {

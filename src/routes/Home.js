@@ -1,6 +1,6 @@
 import React from 'react';
 import Loading from '../app/Loading';
-import Iframe from '../components/iframe/iframe';
+import Iframe from '../features/iframe/iframe';
 
 function Home() {
   return (
