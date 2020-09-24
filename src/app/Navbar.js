@@ -11,7 +11,6 @@ class BootstrapNavbar extends React.Component {
           <div className='col-md-12'>
             <Navbar bg='dark' variant='dark' expand='lg' sticky='top'>
               <Navbar.Brand href='/'>
-                {/* <img src={logo} className='nav-logo' alt='logo' /> */}
                 <img
                   src={logo}
                   className='d-inline-block align-top'
@@ -25,7 +24,7 @@ class BootstrapNavbar extends React.Component {
               <Navbar.Collapse id='basic-navbar-nav'>
                 <Nav className='mr-auto'>
                   {/* <Nav.Link href='#home'>Home</Nav.Link> */}
-
+                  <Nav.Link href='/profile'>Profile</Nav.Link>
                   <Nav.Link href='/playlists'>Playlists</Nav.Link>
                   {/* <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
                       <NavDropdown.Item href='#action/3.1'>
@@ -44,8 +43,7 @@ class BootstrapNavbar extends React.Component {
                     </NavDropdown> */}
                 </Nav>
                 <Form inline>
-                  <Nav.Link href='/profile'>Profile</Nav.Link>
-                  {/* <Button variant='outline-success'>Sign Up</Button> */}
+                  <Button variant='outline-success'>Sign Up</Button>
                   <Button variant='outline-success'>Login</Button>
                 </Form>
               </Navbar.Collapse>

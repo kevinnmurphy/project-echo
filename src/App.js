@@ -7,18 +7,20 @@ import {
 } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Loading from './app/Loading';
 import './App.css';
-
-import Iframe from './components/iframe/iframe';
 import BootstrapNavbar from './app/Navbar';
-
-import { SinglePlaylistPage } from './components/playlists/SinglePlaylistPage';
-import PlaylistList from './components/playlists/PlaylistList';
 
 import Home from './routes/Home';
 import Profile from './routes/Profile';
 import Playlists from './routes/Playlists';
+
+import Loading from './app/Loading';
+import Iframe from './components/iframe/iframe';
+
+import { PlaylistList } from './components/playlists/PlaylistList';
+import { AddPlaylistForm } from './components/playlists/AddPlaylistForm';
+import { EditPlaylistForm } from './components/playlists/EditPlaylistForm';
+import { SinglePlaylistPage } from './components/playlists/SinglePlaylistPage';
 
 function App() {
   return (
@@ -32,23 +34,28 @@ function App() {
           <Route path='/profile'>
             <Profile />
           </Route>
-          <Route path='/playlists'>
-            <Playlists />
-          </Route>
           <Route
             exact
-            path='/'
+            path='/playlists'
             render={() => (
               <React.Fragment>
+                {/* <Playlists /> */}
+                <AddPlaylistForm />
                 <PlaylistList />
               </React.Fragment>
             )}
           />
           <Route
             exact
-            path='/playlists/:playlistId'
+            path='/playlists/:postId'
             component={SinglePlaylistPage}
           />
+          <Route
+            exact
+            path='/editPlaylist/:postId'
+            component={EditPlaylistForm}
+          />
+          <Redirect to='/' />
 
           <header className='App-header'>
             <Loading />

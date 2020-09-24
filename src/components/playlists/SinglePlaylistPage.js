@@ -19,8 +19,13 @@ export const SinglePlaylistPage = ({ match }) => {
   return (
     <section>
       <article className='playlist'>
-        <h2>{playlist.title}</h2>
-        <p className='playlist-content'>{playlist.content}</p>
+        <img
+          src={playlist.pic_url}
+          className='playlist-pic'
+          alt={playlist.id}
+        />
+        <h2>{playlist.name}</h2>
+        <p className='playlist-content'>{playlist.description}</p>
       </article>
     </section>
   );

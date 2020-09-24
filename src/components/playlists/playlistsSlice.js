@@ -3,6 +3,7 @@ import {
   createAsyncThunk,
   createSelector,
   createEntityAdapter,
+  nanoid,
 } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux/lib/hooks/useDispatch';
 
@@ -53,6 +54,25 @@ export const playlistsSlice = createSlice({
   reducers: {
     addPlaylist(state, action) {
       state.push(action.payload);
+    },
+    prepare(name, description, pic_url) {
+      return {
+        payload: {
+          id: nanoid(),
+          name,
+          description,
+          pic_url,
+        },
+      };
+    },
+    editPlaylist(state, action) {
+      const { id, name, description, pic_url } = action.payload;
+      const existingPlaylist = state.find((playlist) => (playlist.id = id));
+      if (existingPlaylist) {
+        existingPlaylist.name = name;
+        existingPlaylist.description = description;
+        existingPlaylist.pic_url = pic_url;
+      }
     },
   },
 });

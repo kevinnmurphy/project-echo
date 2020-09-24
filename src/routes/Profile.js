@@ -8,7 +8,7 @@ function Profile() {
   // const currentUser = useSelector((state) => state.users.currentUser);
   return (
     <div>
-      Profile
+      <h4>Profile</h4>
       <UserPic pic={pic} />
       <h2>{user.name}</h2>
       <p>{user.updated_at}</p>
