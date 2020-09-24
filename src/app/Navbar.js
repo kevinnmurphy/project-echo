@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import logo from '../logos/echologo.png';
 
@@ -10,22 +12,29 @@ class BootstrapNavbar extends React.Component {
         <div className='row'>
           <div className='col-md-12'>
             <Navbar bg='dark' variant='dark' expand='lg' sticky='top'>
-              <Navbar.Brand href='/'>
-                <img
-                  src={logo}
-                  className='d-inline-block align-top'
-                  height='30'
-                  width='30'
-                  padding='10'
-                  alt='logo'
-                />
-              </Navbar.Brand>
+              <LinkContainer to='/'>
+                <Navbar.Brand>
+                  <img
+                    src={logo}
+                    className='d-inline-block align-top'
+                    height='30'
+                    width='30'
+                    padding='10'
+                    alt='logo'
+                  />
+                </Navbar.Brand>
+              </LinkContainer>
               <Navbar.Toggle aria-controls='basic-navbar-nav' />
               <Navbar.Collapse id='basic-navbar-nav'>
                 <Nav className='mr-auto'>
                   {/* <Nav.Link href='#home'>Home</Nav.Link> */}
-                  <Nav.Link href='/profile'>Profile</Nav.Link>
-                  <Nav.Link href='/playlists'>Playlists</Nav.Link>
+                  <LinkContainer to='/profile'>
+                    <Nav.Link>Profile</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/playlists'>
+                    <Nav.Link>Playlists</Nav.Link>
+                  </LinkContainer>
+
                   {/* <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
                       <NavDropdown.Item href='#action/3.1'>
                         Action
