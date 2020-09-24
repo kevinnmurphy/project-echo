@@ -21,6 +21,7 @@ function PlaylistCard(props) {
       </Link>
 
       <Button className='save-btn'>Save Playlist</Button>
+      <Button className='delete-btn'>X</Button>
       <Card.Footer>Last saved: {props.updated_at}</Card.Footer>
     </Card>
   );

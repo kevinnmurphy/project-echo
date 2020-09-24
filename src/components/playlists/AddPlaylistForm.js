@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
 
 import { addPlaylist } from '../playlists/playlistsSlice';
 
@@ -17,14 +16,7 @@ export const AddPlaylistForm = () => {
 
   const onSavePlaylistClick = () => {
     if (name && description && pic_url) {
-      dispatch(
-        addPlaylist({
-          id: nanoid(),
-          name,
-          description,
-          pic_url,
-        })
-      );
+      dispatch(addPlaylist(name, description, pic_url));
       setName('');
       setDescription('');
       setPic('');

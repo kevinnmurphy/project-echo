@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export const SinglePlaylistPage = ({ match }) => {
   const { playlistId } = match.params;
@@ -26,6 +27,9 @@ export const SinglePlaylistPage = ({ match }) => {
         />
         <h2>{playlist.name}</h2>
         <p className='playlist-content'>{playlist.description}</p>
+        <Link to={`/editPlaylist/${playlist.id}`} className='button'>
+          Edit Playlist
+        </Link>
       </article>
     </section>
   );

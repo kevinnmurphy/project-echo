@@ -39,20 +39,20 @@ function App() {
             path='/playlists'
             render={() => (
               <React.Fragment>
-                {/* <Playlists /> */}
-                <AddPlaylistForm />
-                <PlaylistList />
+                <Playlists />
+                {/* <AddPlaylistForm /> */}
+                {/* <PlaylistList /> */}
               </React.Fragment>
             )}
           />
           <Route
             exact
-            path='/playlists/:postId'
+            path='/playlists/:playlistId'
             component={SinglePlaylistPage}
           />
           <Route
             exact
-            path='/editPlaylist/:postId'
+            path='/editPlaylist/:playlistId'
             component={EditPlaylistForm}
           />
           <Redirect to='/' />

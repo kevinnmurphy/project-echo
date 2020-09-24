@@ -67,7 +67,7 @@ export const playlistsSlice = createSlice({
     },
     editPlaylist(state, action) {
       const { id, name, description, pic_url } = action.payload;
-      const existingPlaylist = state.find((playlist) => (playlist.id = id));
+      const existingPlaylist = state.find((playlist) => playlist.id === id);
       if (existingPlaylist) {
         existingPlaylist.name = name;
         existingPlaylist.description = description;
