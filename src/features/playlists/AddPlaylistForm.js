@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import { addPlaylist } from './playlistsSlice';
 
+import { Form, FormControl, Button, FormLabel } from 'react-bootstrap';
+
 export const AddPlaylistForm = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -25,9 +27,36 @@ export const AddPlaylistForm = () => {
 
   return (
     <div>
-      <h2>Add a New Playlist</h2>
-      <form>
-        <label htmlFor='playlistPic'>Playlist Pic:</label>
+      <Form inline>
+        <FormLabel htmlFor='playlistPic'>Picture URL:</FormLabel>
+        <FormControl
+          type='text'
+          id='playlistPic'
+          name='playlistPic'
+          value={pic_url}
+          onChange={onPicChanged}
+        />
+        <FormLabel htmlFor='playlistTitle'>Title:</FormLabel>
+        <FormControl
+          type='text'
+          id='playlistTitle'
+          name='playlistTitle'
+          value={name}
+          onChange={onNameChanged}
+        />
+        <FormLabel htmlFor='playlistDescription'>Description:</FormLabel>
+        <FormControl
+          id='playlistDescription'
+          name='playlistDescription'
+          value={description}
+          onChange={onDescriptionChanged}
+        />
+        <Button type='button' onClick={onSavePlaylistClick}>
+          Create
+        </Button>
+      </Form>
+      {/* <form>
+        <label htmlFor='playlistPic'>Picture URL:</label>
         <input
           type='text'
           id='playlistPic'
@@ -35,7 +64,7 @@ export const AddPlaylistForm = () => {
           value={pic_url}
           onChange={onPicChanged}
         />
-        <label htmlFor='playlistTitle'>Playlist Title:</label>
+        <label htmlFor='playlistTitle'>Title:</label>
         <input
           type='text'
           id='playlistTitle'
@@ -51,9 +80,9 @@ export const AddPlaylistForm = () => {
           onChange={onDescriptionChanged}
         />
         <button type='button' onClick={onSavePlaylistClick}>
-          Save Playlist
+          Create
         </button>
-      </form>
+      </form> */}
     </div>
   );
 };

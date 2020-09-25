@@ -8,7 +8,7 @@ export const EditPlaylistForm = ({ match }) => {
   const { playlistId } = match.params;
 
   const playlist = useSelector((state) =>
-  selectPlaylistById(state, playlistId))
+    selectPlaylistById(state, playlistId)
   );
 
   const [name, setName] = useState(playlist.name);
@@ -24,14 +24,7 @@ export const EditPlaylistForm = ({ match }) => {
 
   const onSavePlaylistClick = () => {
     if (name && description && pic_url) {
-      dispatch(
-        editPlaylist({
-          id: playlistId,
-          name,
-          description,
-          pic_url,
-        })
-      );
+      dispatch(editPlaylist({ id: playlistId, name, description, pic_url }));
       history.push(`/playlists/${playlistId}`);
     }
   };

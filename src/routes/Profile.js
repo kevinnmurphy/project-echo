@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux/lib/hooks/useSelector';
+// import { useSelector } from 'react-redux/lib/hooks/useSelector';
 import UserPic from '../features/users/UserPic';
 import user from '../features/users/usersSlice';
 import pic from '../img/profile.jpg';

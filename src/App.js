@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 
 import './App.css';
 import BootstrapNavbar from './app/Navbar';
@@ -15,12 +15,10 @@ import Profile from './routes/Profile';
 import Playlists from './routes/Playlists';
 
 import Loading from './app/Loading';
-import Iframe from './components/iframe/iframe';
+import Iframe from './features/iframe/iframe';
 
-import { PlaylistList } from './components/playlists/PlaylistList';
-import { AddPlaylistForm } from './components/playlists/AddPlaylistForm';
-import { EditPlaylistForm } from './components/playlists/EditPlaylistForm';
-import { SinglePlaylistPage } from './components/playlists/SinglePlaylistPage';
+import { EditPlaylistForm } from './features/playlists/EditPlaylistForm';
+import { SinglePlaylistPage } from './features/playlists/SinglePlaylistPage';
 
 function App() {
   return (
@@ -40,8 +38,6 @@ function App() {
             render={() => (
               <React.Fragment>
                 <Playlists />
-                {/* <AddPlaylistForm /> */}
-                {/* <PlaylistList /> */}
               </React.Fragment>
             )}
           />
@@ -55,7 +51,8 @@ function App() {
             path='/editPlaylist/:playlistId'
             component={EditPlaylistForm}
           />
-          <Redirect to='/' />
+
+          {/* <Redirect to='/' /> */}
 
           <header className='App-header'>
             <Loading />

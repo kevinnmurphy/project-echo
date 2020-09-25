@@ -17,7 +17,7 @@ function Playlists() {
               eventKey='0'
               className='playlist-new'
             >
-              New
+              New Playlist
             </Accordion.Toggle>
 
             <Form inline>

@@ -69,3 +69,8 @@
 }
 .playlist-new {
 }
+
+.loader {
+  margin: auto;
+  vertical-align: middle;
+}
