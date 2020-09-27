@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { Form, FormControl, Button, FormLabel } from 'react-bootstrap';
+
 import { editPlaylist, selectPlaylistById } from './playlistsSlice';
 
 export const EditPlaylistForm = ({ match }) => {
@@ -24,7 +26,9 @@ export const EditPlaylistForm = ({ match }) => {
 
   const onSavePlaylistClick = () => {
     if (name && description && pic_url) {
-      dispatch(editPlaylist({ id: playlistId, name, description, pic_url }));
+      dispatch(
+        editPlaylist({ id: playlistId, data: { name, description, pic_url } })
+      );
       history.push(`/playlists/${playlistId}`);
     }
   };
@@ -32,34 +36,34 @@ export const EditPlaylistForm = ({ match }) => {
   return (
     <div>
       <h2>Edit Playlist</h2>
-      <form>
-        <label htmlFor='playlistPic'>Playlist Pic:</label>
-        <input
+      <Form inline>
+        <FormLabel htmlFor='playlistPic'>Picture URL:</FormLabel>
+        <FormControl
           type='text'
           id='playlistPic'
           name='playlistPic'
           value={pic_url}
           onChange={onPicChanged}
         />
-        <label htmlFor='playlistTitle'>Playlist Title:</label>
-        <input
+        <FormLabel htmlFor='playlistTitle'>Title:</FormLabel>
+        <FormControl
           type='text'
           id='playlistTitle'
           name='playlistTitle'
           value={name}
           onChange={onNameChanged}
         />
-        <label htmlFor='playlistDescription'>Description:</label>
-        <input
+        <FormLabel htmlFor='playlistDescription'>Description:</FormLabel>
+        <FormControl
           id='playlistDescription'
           name='playlistDescription'
           value={description}
           onChange={onDescriptionChanged}
         />
-        <button type='button' onClick={onSavePlaylistClick}>
-          Save Playlist
-        </button>
-      </form>
+        <Button type='button' onClick={onSavePlaylistClick}>
+          Save
+        </Button>
+      </Form>
     </div>
   );
 };

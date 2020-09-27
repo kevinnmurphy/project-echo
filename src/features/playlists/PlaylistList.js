@@ -6,27 +6,35 @@ import {
   selectAllPlaylists,
   fetchPlaylists,
   removePlaylist,
+  selectPlaylistById,
 } from './playlistsSlice';
 import Loading from '../../app/Loading';
 
-export const PlaylistList = () => {
+export const PlaylistList = ({ query }) => {
   const dispatch = useDispatch();
-  const playlists = useSelector(selectAllPlaylists);
+  const playlists = useSelector((state) => selectAllPlaylists(state));
 
   const playlistStatus = useSelector((state) => state.playlists.status);
-  const error = useSelector((state) => state.playlists.error);
-
   useEffect(() => {
     if (playlistStatus === 'idle') {
       dispatch(fetchPlaylists());
     }
-  }, []);
+  }, [playlistStatus, dispatch]);
+
+  const error = useSelector((state) => state.playlists.error);
 
   const deletePlaylist = (id) => {
     dispatch(removePlaylist(id));
   };
 
-  const renderPlaylists = playlists.map((playlist) => (
+  let filteredPlaylists = playlists;
+  if (query !== '') {
+    filteredPlaylists = playlists.filter((playlist) =>
+      playlist.name.toLowerCase().includes(query.toLowerCase())
+    );
+  }
+
+  const renderPlaylists = filteredPlaylists.map((playlist) => (
     <PlaylistCard
       key={playlist.id}
       name={playlist.name}

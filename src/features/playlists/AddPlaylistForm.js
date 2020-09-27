@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addPlaylist } from './playlistsSlice';
-
 import { Form, FormControl, Button, FormLabel } from 'react-bootstrap';
+
+import { addPlaylist } from './playlistsSlice';
+import { unwrapResult } from '@reduxjs/toolkit';
 
 export const AddPlaylistForm = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [pic_url, setPic] = useState('');
+  const [addrequestStatus, setAddRequestStatus] = useState('idle');
 
   const dispatch = useDispatch();
 
@@ -55,34 +57,6 @@ export const AddPlaylistForm = () => {
           Create
         </Button>
       </Form>
-      {/* <form>
-        <label htmlFor='playlistPic'>Picture URL:</label>
-        <input
-          type='text'
-          id='playlistPic'
-          name='playlistPic'
-          value={pic_url}
-          onChange={onPicChanged}
-        />
-        <label htmlFor='playlistTitle'>Title:</label>
-        <input
-          type='text'
-          id='playlistTitle'
-          name='playlistTitle'
-          value={name}
-          onChange={onNameChanged}
-        />
-        <label htmlFor='playlistDescription'>Description:</label>
-        <input
-          id='playlistDescription'
-          name='playlistDescription'
-          value={description}
-          onChange={onDescriptionChanged}
-        />
-        <button type='button' onClick={onSavePlaylistClick}>
-          Create
-        </button>
-      </form> */}
     </div>
   );
 };
