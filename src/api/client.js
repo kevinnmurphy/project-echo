@@ -1,9 +1,11 @@
-export async function client(endpoint, { body, ...customConfig } = {}) {
-  const headers = { 'Content-Type': 'application/json' };
+export async function client(endpoint, { body, method, ...customConfig } = {}) {
+  const headers = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  };
 
   const config = {
-    method: body ? 'POST' : 'GET',
-    ...customConfig,
+    method: method,
     headers: {
       ...headers,
       ...customConfig.headers,
@@ -32,13 +34,13 @@ client.get = function (endpoint, customConfig = {}) {
 };
 
 client.post = function (endpoint, body, customConfig = {}) {
-  return client(endpoint, { ...customConfig, body });
+  return client(endpoint, { ...customConfig, body, method: 'POST' });
 };
 
 client.delete = function (endpoint, customConfig = {}) {
   return client(endpoint, { ...customConfig, method: 'DELETE' });
 };
 
-client.patch = function (endpoint, customConfig = {}) {
-  return client(endpoint, { ...customConfig, method: 'PATCH' });
+client.patch = function (endpoint, body, customConfig = {}) {
+  return client(endpoint, { ...customConfig, body, method: 'PATCH' });
 };

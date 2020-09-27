@@ -63,11 +63,20 @@
 
 .playlist-collection {
   /* flex-wrap: wrap; */
+  padding: 4px;
 }
 .playlist-header {
   display: inline-flex;
 }
 .playlist-new {
+}
+
+.playlist-card {
+}
+
+.playlist-card:hover {
+  border: 2em;
+  border-color: #61dafb;
 }
 
 .loader {

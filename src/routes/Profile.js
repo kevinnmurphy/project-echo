@@ -4,16 +4,38 @@ import UserPic from '../features/users/UserPic';
 import user from '../features/users/usersSlice';
 import pic from '../img/profile.jpg';
 
-function Profile() {
-  // const currentUser = useSelector((state) => state.users.currentUser);
+import { useAuth0 } from '@auth0/auth0-react';
+
+// function Profile() {
+//   // const currentUser = useSelector((state) => state.users.currentUser);
+//   return (
+//     <div>
+//       <h4>Profile</h4>
+//       <UserPic pic={pic} />
+//       <h2>{user.name}</h2>
+//       <p>{user.updated_at}</p>
+//     </div>
+//   );
+// }
+
+// export default Profile;
+
+const Profile = () => {
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
+
   return (
-    <div>
-      <h4>Profile</h4>
-      <UserPic pic={pic} />
-      <h2>{user.name}</h2>
-      <p>{user.updated_at}</p>
-    </div>
+    isAuthenticated && (
+      <div>
+        <img src={user.picture} alt={user.name} />
+        <h2>{user.name}</h2>
+        <p>{user.email}</p>
+      </div>
+    )
   );
-}
+};
 
 export default Profile;

@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import selectPlaylistById from './playlistsSlice';
+import { PlaylistAuthor } from './PlaylistAuthor';
+import { selectPlaylistById } from './playlistsSlice';
 
 export const SinglePlaylistPage = ({ match }) => {
   const { playlistId } = match.params;

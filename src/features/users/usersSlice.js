@@ -5,11 +5,13 @@ import {
   createEntityAdapter,
 } from '@reduxjs/toolkit';
 
-const usersAdapter = createEntityAdapter();
+import echo from '../../api/echo';
+import { client } from '../../api/client';
 
+const usersAdapter = createEntityAdapter();
 const initialState = usersAdapter.getInitialState({
-  name: '',
-  pic_url: '',
+  status: 'idle',
+  error: null,
 });
 
 // export const fetchUser = createAsyncThunk('users/fetchUsers', async () > {

@@ -9,10 +9,18 @@ import store from './app/store';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { Auth0Provider } from '@auth0/auth0-react';
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Auth0Provider
+        domain='dev-ms6p76bw.us.auth0.com'
+        clientId='RNyTNvlhVjw98GdNSgpgyUtrKoQjGD1g'
+        redirectUri={window.location.origin}
+      >
+        <App />
+      </Auth0Provider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

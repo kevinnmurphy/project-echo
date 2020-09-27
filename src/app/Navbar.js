@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import logo from '../logos/echologo.png';
+import Logo from './Logo';
+
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
 
 class BootstrapNavbar extends React.Component {
   render() {
@@ -14,14 +18,15 @@ class BootstrapNavbar extends React.Component {
             <Navbar bg='dark' variant='dark' expand='lg' sticky='top'>
               <LinkContainer to='/'>
                 <Navbar.Brand>
-                  <img
+                  {/* <img
                     src={logo}
                     className='d-inline-block align-top'
                     height='30'
                     width='30'
                     padding='10'
                     alt='logo'
-                  />
+                  /> */}
+                  <Logo />
                 </Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -52,8 +57,10 @@ class BootstrapNavbar extends React.Component {
                     </NavDropdown> */}
                 </Nav>
                 <Form inline>
-                  <Button variant='outline-success'>Sign Up</Button>
-                  <Button variant='outline-success'>Login</Button>
+                  <LoginButton />
+                  <LogoutButton />
+                  {/* <Button variant='outline-success'>Sign Up</Button>
+                  <Button variant='outline-success'>Login</Button> */}
                 </Form>
               </Navbar.Collapse>
             </Navbar>
