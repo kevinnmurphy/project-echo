@@ -40,18 +40,27 @@ export const addPlaylist = createAsyncThunk(
     const playlistData = response.data;
     //attach to user
     const userId = playlistData.relationships.users.data.map((user) => user.id);
-    return { id: playlistData.id, ...playlistData.attributes };
+    return {
+      id: playlistData.id,
+      ...playlistData.attributes,
+      // ...playlistData.relationships.users.data.concat(user),
+    };
   }
 );
 
 export const editPlaylist = createAsyncThunk(
   'playlists/editPlaylist',
   async ({ id, data }) => {
+    debugger;
     const response = await client.patch(`${echo.baseURL}/playlists/${id}`, {
       playlist: data,
     });
     const playlistData = response.data;
-    return { id: playlistData.id, ...playlistData.attributes };
+    return {
+      id: playlistData.id,
+      ...playlistData.attributes,
+      ...playlistData.relationships,
+    };
   }
 );
 

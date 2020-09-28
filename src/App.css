@@ -92,3 +92,11 @@
   margin: auto;
   vertical-align: middle;
 }
+
+.profile-pic {
+  padding: 30px;
+}
+
+.edit-input {
+  height: calc(1.5em + 0.75rem + 2px);
+}

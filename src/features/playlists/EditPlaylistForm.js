@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 import { Form, FormControl, Button, FormLabel } from 'react-bootstrap';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 import { editPlaylist, selectPlaylistById } from './playlistsSlice';
 
@@ -15,6 +16,7 @@ export const EditPlaylistForm = () => {
   const [name, setName] = useState(playlist.name);
   const [description, setDescription] = useState(playlist.description);
   const [pic_url, setPic] = useState(playlist.pic_url);
+  const [user_ids, setUser_ids] = useState({});
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,11 +24,15 @@ export const EditPlaylistForm = () => {
   const onNameChanged = (e) => setName(e.target.value);
   const onDescriptionChanged = (e) => setDescription(e.target.value);
   const onPicChanged = (e) => setPic(e.target.value);
+  const onUserChanged = (e) => setUser_ids(e.target.value);
 
   const onSavePlaylistClick = () => {
     if (name && description && pic_url) {
       dispatch(
-        editPlaylist({ id: slug, data: { name, description, pic_url } })
+        editPlaylist({
+          id: slug,
+          data: { name, description, pic_url, user_ids },
+        })
       );
       history.push(`/playlists/${slug}`);
     }
@@ -34,35 +40,63 @@ export const EditPlaylistForm = () => {
 
   return (
     <div>
-      <h2>Edit Playlist</h2>
-      <Form inline>
-        <FormLabel htmlFor='playlistPic'>Picture URL:</FormLabel>
+      <InputGroup>
+        <InputGroup.Prepend className='edit-input'>
+          <InputGroup.Text>Picture URL</InputGroup.Text>
+        </InputGroup.Prepend>
+        <FormLabel htmlFor='playlistPic'></FormLabel>
         <FormControl
           type='text'
           id='playlistPic'
           name='playlistPic'
+          placeholder='Picture URL'
           value={pic_url}
           onChange={onPicChanged}
         />
-        <FormLabel htmlFor='playlistTitle'>Title:</FormLabel>
+        <InputGroup.Prepend className='edit-input'>
+          <InputGroup.Text>Title</InputGroup.Text>
+        </InputGroup.Prepend>
+        <FormLabel htmlFor='playlistTitle'></FormLabel>
         <FormControl
           type='text'
           id='playlistTitle'
           name='playlistTitle'
+          placeholder='Title'
           value={name}
           onChange={onNameChanged}
         />
-        <FormLabel htmlFor='playlistDescription'>Description:</FormLabel>
+        <InputGroup.Prepend className='edit-input'>
+          <InputGroup.Text>Description</InputGroup.Text>
+        </InputGroup.Prepend>
+        <FormLabel htmlFor='playlistDescription'></FormLabel>
         <FormControl
           id='playlistDescription'
           name='playlistDescription'
+          placeholder='Description'
           value={description}
           onChange={onDescriptionChanged}
         />
-        <Button type='button' onClick={onSavePlaylistClick}>
+        <Form.Group
+          id='playlistUser'
+          name='playlistUser'
+          value={user_ids}
+          onChange={onUserChanged}
+        >
+          <FormControl as='select' defaultValue='-User-'>
+            <option>-Add User-</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </FormControl>
+        </Form.Group>
+        <Button
+          className='edit-input'
+          type='button'
+          onClick={onSavePlaylistClick}
+        >
           Save
         </Button>
-      </Form>
+      </InputGroup>
     </div>
   );
 };
