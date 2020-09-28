@@ -23,7 +23,7 @@ export const AddPlaylistForm = () => {
   const onUserChanged = (e) => setUser_ids(e.target.value);
 
   const onSavePlaylistClick = () => {
-    if (name && description && pic_url && user_ids) {
+    if (name && description && pic_url) {
       dispatch(addPlaylist({ name, description, pic_url, user_ids }));
       setName('');
       setDescription('');
@@ -43,7 +43,7 @@ export const AddPlaylistForm = () => {
           type='text'
           id='playlistPic'
           name='playlistPic'
-          placeholder='Picture URL'
+          placeholder='...'
           value={pic_url}
           onChange={onPicChanged}
         />
@@ -55,7 +55,7 @@ export const AddPlaylistForm = () => {
           type='text'
           id='playlistTitle'
           name='playlistTitle'
-          placeholder='Title'
+          placeholder='...'
           value={name}
           onChange={onNameChanged}
         />
@@ -66,23 +66,24 @@ export const AddPlaylistForm = () => {
         <FormControl
           id='playlistDescription'
           name='playlistDescription'
-          placeholder='Description'
+          placeholder='...'
           value={description}
           onChange={onDescriptionChanged}
         />
-        <Form.Group
+        <InputGroup.Prepend className='edit-input'>
+          <InputGroup.Text>User</InputGroup.Text>
+        </InputGroup.Prepend>
+        <FormControl
+          as='select'
           id='playlistUser'
           name='playlistUser'
           value={user_ids}
           onChange={onUserChanged}
         >
-          <FormControl as='select' defaultValue='-User-'>
-            <option>-Add User-</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </FormControl>
-        </Form.Group>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </FormControl>
         <Button
           className='edit-input'
           type='button'
