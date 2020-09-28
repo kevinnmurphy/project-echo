@@ -22,7 +22,11 @@ export const fetchPlaylists = createAsyncThunk(
     return response.data.map((playlist) => {
       // const songIds = playlist.relationships.songs.data.map((song) => song.id);
       // return { id: playlist.id, ...playlist.attributes, songIds: songIds };
-      return { id: playlist.id, ...playlist.attributes };
+      return {
+        id: playlist.id,
+        ...playlist.attributes,
+        ...playlist.relationships,
+      };
     }, []);
   }
 );
@@ -84,7 +88,6 @@ const playlistsSlice = createSlice({
       state.status = 'failed';
       state.error = action.payload;
     },
-    [addPlaylist.fulfilled]: playlistsAdapter.addOne,
     [addPlaylist.fulfilled]: playlistsAdapter.addOne,
     [editPlaylist.fulfilled]: playlistsAdapter.upsertOne,
     [removePlaylist.fulfilled]: playlistsAdapter.removeOne,

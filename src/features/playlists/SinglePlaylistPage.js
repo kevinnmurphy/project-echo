@@ -1,16 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { PlaylistAuthor } from './PlaylistAuthor';
 import { selectPlaylistById } from './playlistsSlice';
+import { selectUserById } from '../users/usersSlice';
+import { SongList } from '../songs/SongList';
 
-export const SinglePlaylistPage = ({ match }) => {
-  const { playlistId } = match.params;
+export const SinglePlaylistPage = () => {
+  const { slug } = useParams();
 
-  const playlist = useSelector((state) =>
-    selectPlaylistById(state, playlistId)
-  );
+  const playlist = useSelector((state) => selectPlaylistById(state, slug));
+
+  // const user = useSelector((state) => selectUserById(state, userId));
 
   if (!playlist) {
     return (
@@ -30,9 +33,12 @@ export const SinglePlaylistPage = ({ match }) => {
         />
         <h2>{playlist.name}</h2>
         <p className='playlist-content'>{playlist.description}</p>
+        {/* <p>Created by: {playlist.users[0]}</p> */}
+        {/* <PlaylistAuthor /> */}
         <Link to={`/editPlaylist/${playlist.id}`} className='button'>
           Edit Playlist
         </Link>
+        {/* <SongList /> */}
       </article>
     </section>
   );

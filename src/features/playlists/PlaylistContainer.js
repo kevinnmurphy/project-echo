@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PlaylistList from './PlaylistList';
-import { Form, FormControl, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import PlaylistSearch from './PlaylistSearch';
 import AddPlaylistForm from './AddPlaylistForm';
 import { Accordion, Card } from 'react-bootstrap';
+
+import SongsContainer from '../songs/SongsContainer';
 
 const PlaylistContainer = (props) => {
   const [query, setQuery] = useState('');
@@ -33,6 +35,8 @@ const PlaylistContainer = (props) => {
       </Accordion>
 
       <PlaylistList query={query} />
+
+      {/* <SongsContainer /> */}
     </div>
   );
 };

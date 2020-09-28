@@ -25,13 +25,17 @@ function PlaylistCard({
 
   return (
     <Card
-      className='playlist-card'
+      className='playlist-card button muted-button'
       style={{ width: '18rem' }}
       onClick={handleCardClick}
     >
       <Card.Img variant='top' src={pic_url} className='playlist-pic' alt={id} />
       <Card.Title>{name}</Card.Title>
       <Card.Text>{description}</Card.Text>
+
+      <Link to={`/playlists/${id}`} className='button muted-button'>
+        View Playlist
+      </Link>
 
       {/* <Button className='save-btn'>Save Playlist</Button> */}
       <Button className='delete-btn' onClick={deletePlaylist}>

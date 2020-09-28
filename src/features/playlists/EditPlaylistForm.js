@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { Form, FormControl, Button, FormLabel } from 'react-bootstrap';
 
 import { editPlaylist, selectPlaylistById } from './playlistsSlice';
 
-export const EditPlaylistForm = ({ match }) => {
-  const { playlistId } = match.params;
+export const EditPlaylistForm = () => {
+  const { slug } = useParams();
 
-  const playlist = useSelector((state) =>
-    selectPlaylistById(state, playlistId)
-  );
+  const playlist = useSelector((state) => selectPlaylistById(state, slug));
 
   const [name, setName] = useState(playlist.name);
   const [description, setDescription] = useState(playlist.description);
@@ -27,9 +26,9 @@ export const EditPlaylistForm = ({ match }) => {
   const onSavePlaylistClick = () => {
     if (name && description && pic_url) {
       dispatch(
-        editPlaylist({ id: playlistId, data: { name, description, pic_url } })
+        editPlaylist({ id: slug, data: { name, description, pic_url } })
       );
-      history.push(`/playlists/${playlistId}`);
+      history.push(`/playlists/${slug}`);
     }
   };
 
