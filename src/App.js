@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux';
 
 import './App.css';
 import BootstrapNavbar from './app/Navbar';
 
-import Home from './routes/Home';
-import Profile from './routes/Profile';
-import Playlists from './routes/Playlists';
+import Home from './app/Home';
+import PlaylistContainer from './features/playlists/PlaylistContainer';
+import UserProfile from './features/users/UserProfile';
 
 import Loading from './app/Loading';
 import Iframe from './features/iframe/iframe';
@@ -25,29 +25,23 @@ function App() {
             <Home />
           </Route>
           <Route path='/profile'>
-            <Profile />
+            <UserProfile />
           </Route>
           <Route
             exact
             path='/playlists'
             render={() => (
               <React.Fragment>
-                <Playlists />
+                <PlaylistContainer />
               </React.Fragment>
             )}
           />
+          <Route exact path='/playlists/:slug' component={SinglePlaylistPage} />
           <Route
             exact
-            path='/playlists/:playlistId'
-            component={SinglePlaylistPage}
-          />
-          <Route
-            exact
-            path='/editPlaylist/:playlistId'
+            path='/editPlaylist/:slug'
             component={EditPlaylistForm}
           />
-
-          {/* <Redirect to='/' /> */}
 
           <header className='App-header'>
             <Loading />

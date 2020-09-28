@@ -62,16 +62,25 @@
 }
 
 .playlist-collection {
-  /* flex-wrap: wrap; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  justify-content: center;
   padding: 4px;
 }
+
 .playlist-header {
-  display: inline-flex;
+  display: flex;
 }
+
 .playlist-new {
+  flex: start;
 }
 
 .playlist-card {
+  transition: transform 0.2s cubic-bezier(0.34, 2, 0.6, 1), box-shadow 0.1s ease,
+    -webkit-transform 0.2s cubic-bezier(0.34, 2, 0.6, 1);
+  position: relative;
 }
 
 .playlist-card:hover {
