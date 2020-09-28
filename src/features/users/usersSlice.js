@@ -14,21 +14,56 @@ const initialState = usersAdapter.getInitialState({
   error: null,
 });
 
-// export const fetchUser = createAsyncThunk('users/fetchUsers', async () > {
-//   const res = await {}.get('/users')
-// })
+export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
+  const response = await client.get(`${echo.baseURL}/users`);
+  return response.data.map((user) => {
+    debugger;
+    return {
+      id: user.id,
+      ...user.attributes,
+      ...user.relationships,
+    };
+  }, []);
+});
+
+export const addUser = createAsyncThunk('users/addUser', async (data) => {
+  const response = await client.post(`${echo.baseURL}/users`, {
+    user: data,
+  });
+  const userData = response.data;
+  return { id: userData.id, ...userData.attributes };
+});
 
 export const usersSlice = createSlice({
-  name: 'user',
+  name: 'users',
   initialState,
-  reducers: {
-    getUsers: (state) => {},
-    addUser: (state) => {},
-    editUser: (state) => {},
-    removeUser: (state) => {},
+  reducers: {},
+  extraReducers: {
+    [fetchUsers.pending]: (state, action) => {
+      state.status = 'loading';
+    },
+    [fetchUsers.fulfilled]: (state, action) => {
+      state.status = 'succeeded';
+      usersAdapter.upsertMany(state, action.payload);
+    },
+    [fetchUsers.rejected]: (state, action) => {
+      state.status = 'failed';
+      state.error = action.payload;
+    },
+    [addUser.fulfilled]: usersAdapter.addOne,
   },
 });
 
-export const { addUser, editUser, removeUser } = usersSlice.actions;
-
 export default usersSlice.reducer;
+
+export const {
+  selectAll: selectAllUsers,
+  selectById: selectUserById,
+  selectIds: selectUserIds,
+} = usersAdapter.getSelectors((state) => state.users);
+
+// export const selectUsersByPlaylist = createSelector(
+//   [selectAllUsers, (state, playlistId) => playlistId],
+//   (users, playlistID) =>
+//     users.filter((user) => (user) => user.user === playlistId)
+// );

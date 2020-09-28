@@ -4,7 +4,7 @@ import Image from 'react-bootstrap/Image';
 function UserPic(props) {
   return (
     <div>
-      <Image src={props.pic} roundedCircle height='30' />
+      <Image src={props.pic} roundedCircle height={props.height} />
     </div>
   );
 }
