@@ -11,6 +11,18 @@ import { useAuth0 } from '@auth0/auth0-react';
 export const BootstrapNavbar = () => {
   const { isAuthenticated } = useAuth0();
   const authButton = isAuthenticated ? <LogoutButton /> : <LoginButton />;
+  const navTabs = isAuthenticated ? (
+    <Nav className='mr-auto'>
+      <LinkContainer to='/profile'>
+        <Nav.Link>Profile</Nav.Link>
+      </LinkContainer>
+      <LinkContainer to='/playlists'>
+        <Nav.Link>Playlists</Nav.Link>
+      </LinkContainer>
+    </Nav>
+  ) : (
+    <div />
+  );
 
   return (
     <div>
@@ -24,14 +36,7 @@ export const BootstrapNavbar = () => {
             </LinkContainer>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
-              <Nav className='mr-auto'>
-                <LinkContainer to='/profile'>
-                  <Nav.Link>Profile</Nav.Link>
-                </LinkContainer>
-                <LinkContainer to='/playlists'>
-                  <Nav.Link>Playlists</Nav.Link>
-                </LinkContainer>
-              </Nav>
+              {navTabs}
               <Form inline>{authButton}</Form>
             </Navbar.Collapse>
           </Navbar>
