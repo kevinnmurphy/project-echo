@@ -24,7 +24,7 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
-          <Route path='/profile'>
+          <Route exact path='/profile'>
             <UserProfile />
           </Route>
           <Route
@@ -36,12 +36,8 @@ function App() {
               </React.Fragment>
             )}
           />
-          <Route exact path='/playlists/:slug' component={SinglePlaylistPage} />
-          <Route
-            exact
-            path='/editPlaylist/:slug'
-            component={EditPlaylistForm}
-          />
+          <Route path='/playlists/:slug' component={SinglePlaylistPage} />
+          <Route path='/editPlaylist/:slug' component={EditPlaylistForm} />
 
           <header className='App-header'>
             <Loading />
