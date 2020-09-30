@@ -22,7 +22,7 @@ export const SinglePlaylistPage = () => {
       </section>
     );
   }
-
+  // debugger;
   return (
     <section>
       <article className='playlist'>
@@ -33,12 +33,11 @@ export const SinglePlaylistPage = () => {
         />
         <h2>{playlist.name}</h2>
         <p className='playlist-content'>{playlist.description}</p>
-        {/* <p>Created by: {playlist.users[0]}</p> */}
-        {/* <PlaylistAuthor /> */}
-        <Link to={`/editPlaylist/${playlist.id}`} className='button'>
+        {/* <PlaylistAuthor userId={playlist.users.data[0]} /> */}
+        <Link to={`/playlists/${playlist.id}/edit`} className='button'>
           Edit Playlist
         </Link>
-        {/* <SongList /> */}
+        <SongList />
       </article>
     </section>
   );
