@@ -4,8 +4,10 @@ import { useDispatch } from 'react-redux';
 import { Form, FormControl, Button, FormLabel } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-import { addPlaylist } from './playlistsSlice';
+import { addPlaylist, selectAllPlaylists } from './playlistsSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
+import { selectAllUsers } from '../users/usersSlice';
 
 export const AddPlaylistForm = () => {
   const [name, setName] = useState('');
@@ -16,6 +18,7 @@ export const AddPlaylistForm = () => {
   const [addrequestStatus, setAddRequestStatus] = useState('idle');
 
   const dispatch = useDispatch();
+  const users = useSelector(selectAllUsers);
 
   const onNameChanged = (e) => setName(e.target.value);
   const onDescriptionChanged = (e) => setDescription(e.target.value);
@@ -31,6 +34,12 @@ export const AddPlaylistForm = () => {
       setUser_ids('');
     }
   };
+
+  const usersOptions = users.map((user) => (
+    <option key={user.id} value={user.id}>
+      {user.name}
+    </option>
+  ));
 
   return (
     <div>
@@ -73,16 +82,23 @@ export const AddPlaylistForm = () => {
         <InputGroup.Prepend className='edit-input'>
           <InputGroup.Text>User</InputGroup.Text>
         </InputGroup.Prepend>
+        {/* <select id='postAuthor' 
+        value={userId} 
+        onChange={onAuthorChanged}
+        >
+          <option value=''></option>
+          {usersOptions}
+        </select> */}
         <FormControl
           as='select'
           id='playlistUser'
           name='playlistUser'
+          placeholder='...'
           value={user_ids}
           onChange={onUserChanged}
         >
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
+          <option value=''>...</option>
+          {usersOptions}
         </FormControl>
         <Button
           className='edit-input'
