@@ -14,6 +14,7 @@ import Iframe from './features/iframe/iframe';
 
 import { EditPlaylistForm } from './features/playlists/EditPlaylistForm';
 import { SinglePlaylistPage } from './features/playlists/SinglePlaylistPage';
+import PlaylistRouting from './features/playlists/PlaylistRouting';
 
 function App() {
   return (
@@ -27,17 +28,13 @@ function App() {
           <Route exact path='/profile'>
             <UserProfile />
           </Route>
+          <Route path='/playlists' component={PlaylistRouting} />
+          {/* <Route exact path='/playlists/:slug' component={SinglePlaylistPage} />
           <Route
             exact
-            path='/playlists'
-            render={() => (
-              <React.Fragment>
-                <PlaylistContainer />
-              </React.Fragment>
-            )}
-          />
-          <Route path='/playlists/:slug' component={SinglePlaylistPage} />
-          <Route path='/editPlaylist/:slug' component={EditPlaylistForm} />
+            path='/editPlaylist/:slug'
+            component={EditPlaylistForm}
+          /> */}
 
           <header className='App-header'>
             <Loading />
