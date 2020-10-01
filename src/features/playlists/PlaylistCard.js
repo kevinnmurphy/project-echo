@@ -47,7 +47,3 @@ function PlaylistCard({
 }
 
 export default PlaylistCard;
-
-{
-  /* <SongList /> */
-}

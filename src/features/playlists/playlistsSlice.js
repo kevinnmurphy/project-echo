@@ -51,7 +51,6 @@ export const addPlaylist = createAsyncThunk(
 export const editPlaylist = createAsyncThunk(
   'playlists/editPlaylist',
   async ({ id, data }) => {
-    debugger;
     const response = await client.patch(`${echo.baseURL}/playlists/${id}`, {
       playlist: data,
     });

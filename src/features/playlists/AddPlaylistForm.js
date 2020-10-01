@@ -12,7 +12,9 @@ import { selectAllUsers } from '../users/usersSlice';
 export const AddPlaylistForm = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [pic_url, setPic] = useState('');
+  const [pic_url, setPic] = useState(
+    'https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
+  );
   const [user_ids, setUser_ids] = useState('');
 
   const [addrequestStatus, setAddRequestStatus] = useState('idle');
@@ -30,7 +32,7 @@ export const AddPlaylistForm = () => {
       dispatch(addPlaylist({ name, description, pic_url, user_ids }));
       setName('');
       setDescription('');
-      setPic('');
+      // setPic('');
       setUser_ids('');
     }
   };

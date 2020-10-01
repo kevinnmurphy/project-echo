@@ -42,7 +42,10 @@ export const PlaylistList = ({ query }) => {
       pic_url={playlist.pic_url}
       updated_at={playlist.updated_at}
       id={playlist.id}
-      deletePlaylist={() => deletePlaylist(playlist.id)}
+      deletePlaylist={(e) => {
+        deletePlaylist(playlist.id);
+        e.stopPropagation();
+      }}
     />
   ));
 
