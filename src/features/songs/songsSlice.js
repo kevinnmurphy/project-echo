@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import {
   createSlice,
   createAsyncThunk,
@@ -32,24 +31,29 @@ export const addSong = createAsyncThunk('songs/addSong', async (data) => {
     song: data,
   });
   const songData = response.data;
-  //attach to user
-  const userId = songData.relationships.users.data.map((user) => user.id);
+  //attach to playlist
+  const playlistId = songData.relationships.playlists.data.map(
+    (user) => user.id
+  );
   return { id: songData.id, ...songData.attributes };
 });
 
 const songsSlice = createSlice({
   name: 'songs',
   initialState,
-  reducers: {
-    likeAdded(state, action) {
-      const { songId, like } = action.payload;
-      const existingSong = state.entities[songId];
-      if (existingSong) {
-        existingSong.likes[like]++;
-      }
-    },
-  },
+  reducers: {},
   extraReducers: {},
 });
 
 export default songsSlice.reducer;
+
+export const {
+  selectAll: selectAllSongs,
+  selectById: selectSongById,
+  selectIds: selectSongIds,
+} = songsAdapter.getSelectors((state) => state.songs);
+
+export const selectSongsByPlaylist = createSelector(
+  [selectAllSongs, (state, playlistId) => playlistId],
+  (songs, playlistId) => songs.filter((song) => song.playlist === playlistId)
+);
