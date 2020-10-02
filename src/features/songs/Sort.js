@@ -3,13 +3,20 @@ import {
   SortableContainer,
   SortableElement,
   arrayMove,
+  sortableHandle,
 } from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({ value }) => <li>{value}</li>);
+const DragHandle = sortableHandle(() => <span>::</span>);
+const SortableItem = SortableElement(({ value }) => (
+  <li>
+    <DragHandle />
+    {value}
+  </li>
+));
 
 const SortableList = SortableContainer(({ items }) => {
   return (
-    <ul>
+    <ul style={{ listStyleType: 'none', display: 'contents' }}>
       {items.map((value, index) => (
         <SortableItem key={`item-${index}`} index={index} value={value} />
       ))}
@@ -25,7 +32,7 @@ const SortableComponent = ({ songs }) => {
     setItems(arrayMove(items, oldIndex, newIndex));
   };
 
-  return <SortableList items={items} onSortEnd={onSortEnd} />;
+  return <SortableList items={items} onSortEnd={onSortEnd} useDragHandle />;
 };
 
 export default SortableComponent;
