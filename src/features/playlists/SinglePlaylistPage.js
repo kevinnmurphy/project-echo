@@ -30,6 +30,7 @@ export const SinglePlaylistPage = () => {
           src={playlist.pic_url}
           className='playlist-pic'
           alt={playlist.id}
+          style={{ height: '500px' }}
         />
         <h2>{playlist.name}</h2>
         <p className='playlist-content'>{playlist.description}</p>
