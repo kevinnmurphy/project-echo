@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import App from './App';
+// import AppTest from './AppTest';
 import * as serviceWorker from './serviceWorker';
 import store from './app/store';
 
@@ -21,6 +22,8 @@ ReactDOM.render(
         domain='dev-ms6p76bw.us.auth0.com'
         clientId='RNyTNvlhVjw98GdNSgpgyUtrKoQjGD1g'
         redirectUri={window.location.origin}
+        audience='https://dev-ms6p76bw.us.auth0.com/api/v2/'
+        scope='read:current_user update:current_user_metadata '
       >
         <App />
       </Auth0Provider>
