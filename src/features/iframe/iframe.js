@@ -1,6 +1,6 @@
 import React from 'react';
 
-const playlistURL = '565ijKKAnZ5hsAemTZgEPK?j=';
+const playlistURL = '565ijKKAnZ5hsAemTZgEPK';
 
 export default function Iframe() {
   const iframe = `<iframe src="https://open.spotify.com/embed/playlist/${playlistURL}" style="border: 0; width: 100%; height: 380px;" allowfullscreen allow="encrypted-media"></iframe>`;

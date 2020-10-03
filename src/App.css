@@ -61,13 +61,13 @@
   vertical-align: auto;
 }
 
-.playlist-collection {
+/* .playlist-collection {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   justify-content: center;
   padding: 4px;
-}
+} */
 
 .playlist-header {
   display: flex;
@@ -99,4 +99,12 @@
 
 .edit-input {
   height: calc(1.5em + 0.75rem + 2px);
+}
+
+.song-collection {
+  flex-direction: column;
+}
+
+.song-card {
+  width: 95%;
 }

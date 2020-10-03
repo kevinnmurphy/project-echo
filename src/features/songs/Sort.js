@@ -6,7 +6,7 @@ import {
   sortableHandle,
 } from 'react-sortable-hoc';
 
-const DragHandle = sortableHandle(() => <span>::</span>);
+const DragHandle = sortableHandle(() => <span>===</span>);
 const SortableItem = SortableElement(({ value }) => (
   <li>
     <DragHandle />
@@ -16,7 +16,7 @@ const SortableItem = SortableElement(({ value }) => (
 
 const SortableList = SortableContainer(({ items }) => {
   return (
-    <ul style={{ listStyleType: 'none', display: 'contents' }}>
+    <ul style={{ listStyleType: 'none' }}>
       {items.map((value, index) => (
         <SortableItem key={`item-${index}`} index={index} value={value} />
       ))}
