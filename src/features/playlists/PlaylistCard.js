@@ -1,5 +1,4 @@
 import React from 'react';
-// import SongCard from '../songs/SongCard';
 import Card from 'react-bootstrap/card';
 import Button from 'react-bootstrap/button';
 import { Link, useHistory } from 'react-router-dom';

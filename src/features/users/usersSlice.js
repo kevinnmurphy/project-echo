@@ -17,7 +17,6 @@ const initialState = usersAdapter.getInitialState({
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   const response = await client.get(`${echo.baseURL}/users`);
   return response.data.map((user) => {
-    debugger;
     return {
       id: user.id,
       ...user.attributes,
