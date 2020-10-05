@@ -1,22 +1,54 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import { useSelector, useDispatch } from 'react-redux';
 
 import './App.css';
 import BootstrapNavbar from './app/Navbar';
 
 import Home from './app/Home';
-import PlaylistContainer from './features/playlists/PlaylistContainer';
 import UserProfile from './features/users/UserProfile';
 
 import Loading from './app/Loading';
 import Iframe from './features/iframe/iframe';
 
-import { EditPlaylistForm } from './features/playlists/EditPlaylistForm';
-import { SinglePlaylistPage } from './features/playlists/SinglePlaylistPage';
+import RedirectPage from './app/RedirectPage';
+
 import PlaylistRouting from './features/playlists/PlaylistRouting';
 
+import { PlayerPage } from './features/player/PlayerPage';
+import Tracks from './features/spotify/authSong';
+
+import { useAuth0 } from '@auth0/auth0-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import {
+  selectAllUsers,
+  currentUserAdd,
+  addUser,
+} from './features/users/usersSlice';
+
 function App() {
+  const { user, isAuthenticated } = useAuth0();
+  const users = useSelector(selectAllUsers);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const { email, name, picture } = user;
+    const existingUser = users.find((user) => user.email === email);
+    if (existingUser) {
+      dispatch(currentUserAdd(existingUser.id));
+    } else {
+      const addCurrentUser = async () => {
+        const resultAction = await dispatch(
+          addUser({ email, name, picture_url: picture })
+        );
+        const newUser = unwrapResult(resultAction);
+        dispatch(currentUserAdd(newUser.id));
+      };
+      addCurrentUser();
+    }
+  }, [isAuthenticated]);
+
   return (
     <Router>
       <BootstrapNavbar />
@@ -25,25 +57,24 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
+          <Route path='/redirect' component={RedirectPage} />
           <Route exact path='/profile'>
             <UserProfile />
           </Route>
           <Route path='/playlists' component={PlaylistRouting} />
-          {/* <Route exact path='/playlists/:slug' component={SinglePlaylistPage} />
-          <Route
-            exact
-            path='/editPlaylist/:slug'
-            component={EditPlaylistForm}
-          /> */}
+          <React.Fragment>
+            <header className='App-header'>
+              <Loading />
+              <p>Page Not Found.</p>
+            </header>
+            <PlayerPage />
+            {/* <Tracks /> */}
 
-          <header className='App-header'>
-            <Loading />
-            <p>Select your playlist.</p>
-          </header>
-          <Iframe />
-          {/* <SongsContainer /> */}
+            <Iframe />
+            {/* <SongsContainer /> */}
 
-          <footer></footer>
+            <footer></footer>
+          </React.Fragment>
         </Switch>
       </div>
     </Router>

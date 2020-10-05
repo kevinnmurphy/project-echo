@@ -12,6 +12,7 @@ const usersAdapter = createEntityAdapter();
 const initialState = usersAdapter.getInitialState({
   status: 'idle',
   error: null,
+  currentUser: null,
 });
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
@@ -36,7 +37,11 @@ export const addUser = createAsyncThunk('users/addUser', async (data) => {
 export const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  reducers: {
+    currentUserAdd(state, action) {
+      state.currentUser = action.payload;
+    },
+  },
   extraReducers: {
     [fetchUsers.pending]: (state, action) => {
       state.status = 'loading';
@@ -53,6 +58,8 @@ export const usersSlice = createSlice({
   },
 });
 
+export const { currentUserAdd } = usersSlice.actions;
+
 export default usersSlice.reducer;
 
 export const {
@@ -61,8 +68,8 @@ export const {
   selectIds: selectUserIds,
 } = usersAdapter.getSelectors((state) => state.users);
 
-// export const selectUsersByPlaylist = createSelector(
-//   [selectAllUsers, (state, playlistId) => playlistId],
-//   (users, playlistID) =>
-//     users.filter((user) => (user) => user.user === playlistId)
-// );
+export const selectUsersByPlaylist = createSelector(
+  [selectAllUsers, (state, playlistId) => playlistId],
+  (users, playlistId) =>
+    users.filter((user) => user.playlists.data.id === playlistId)
+);

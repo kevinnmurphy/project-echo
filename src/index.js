@@ -16,19 +16,18 @@ import { fetchUsers } from './features/users/usersSlice';
 store.dispatch(fetchUsers());
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Auth0Provider
-        domain='dev-ms6p76bw.us.auth0.com'
-        clientId='RNyTNvlhVjw98GdNSgpgyUtrKoQjGD1g'
-        redirectUri={window.location.origin}
-        audience='https://dev-ms6p76bw.us.auth0.com/api/v2/'
-        scope='read:current_user update:current_user_metadata '
-      >
-        <App />
-      </Auth0Provider>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Auth0Provider
+      domain='dev-ms6p76bw.us.auth0.com'
+      clientId='RNyTNvlhVjw98GdNSgpgyUtrKoQjGD1g'
+      redirectUri={window.location.origin}
+      // audience='https://dev-ms6p76bw.us.auth0.com/api/v2/'
+      // scope='read:current_user update:current_user_metadata '
+    >
+      <App />
+    </Auth0Provider>
+  </Provider>,
+
   document.getElementById('root')
 );
 
