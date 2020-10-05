@@ -1,9 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectUserById, selectUsersByPlaylist } from '../users/usersSlice';
 
-export const PlaylistAuthor = ({ userId }) => {
-  const author = useSelector((state) =>
-    state.users.find((user) => user.id === userId)
+export const PlaylistAuthor = ({ userId, playlistId }) => {
+  const author = useSelector(
+    (state) => selectUserById(state, userId[0].id).name
   );
-  return <span>by {author ? author.name : 'Unknown'}</span>;
+  let authorList;
+
+  // const author = useSelector((state) =>
+  //   selectUsersByPlaylist(state, playlistId)
+  // );
+  // debugger;
+  return <p>by {author ? author : 'Unknown'}</p>;
 };
