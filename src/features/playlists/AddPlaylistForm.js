@@ -99,7 +99,7 @@ export const AddPlaylistForm = () => {
           value={user_ids}
           onChange={onUserChanged}
         >
-          <option value=''>...</option>
+          <option value='1'>...</option>
           {usersOptions}
         </FormControl>
         <Button

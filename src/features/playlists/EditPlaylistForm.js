@@ -7,6 +7,7 @@ import { Form, FormControl, Button, FormLabel } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 import { editPlaylist, selectPlaylistById } from './playlistsSlice';
+import { selectAllUsers } from '../users/usersSlice';
 
 export const EditPlaylistForm = () => {
   const { slug } = useParams();
@@ -20,6 +21,7 @@ export const EditPlaylistForm = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const users = useSelector(selectAllUsers);
 
   const onNameChanged = (e) => setName(e.target.value);
   const onDescriptionChanged = (e) => setDescription(e.target.value);
@@ -37,6 +39,12 @@ export const EditPlaylistForm = () => {
       history.push(`/playlists/${slug}`);
     }
   };
+
+  const usersOptions = users.map((user) => (
+    <option key={user.id} value={user.id}>
+      {user.name}
+    </option>
+  ));
 
   return (
     <div>
@@ -79,23 +87,30 @@ export const EditPlaylistForm = () => {
         <InputGroup.Prepend className='edit-input'>
           <InputGroup.Text>User</InputGroup.Text>
         </InputGroup.Prepend>
+        {/* <select id='postAuthor' 
+        value={userId} 
+        onChange={onAuthorChanged}
+        >
+          <option value=''></option>
+          {usersOptions}
+        </select> */}
         <FormControl
           as='select'
           id='playlistUser'
           name='playlistUser'
+          placeholder='...'
           value={user_ids}
           onChange={onUserChanged}
         >
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
+          <option value='1'>...</option>
+          {usersOptions}
         </FormControl>
         <Button
           className='edit-input'
           type='button'
           onClick={onSavePlaylistClick}
         >
-          Save
+          Create
         </Button>
       </InputGroup>
     </div>
