@@ -3,26 +3,29 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
-import { PlaylistAuthor } from './PlaylistAuthor';
+import PlaylistAuthor from './PlaylistAuthor';
 import { selectPlaylistById } from './playlistsSlice';
 import { selectUserById } from '../users/usersSlice';
-import { SongList } from '../songs/SongList';
+
+import Loading from '../../app/Loading';
+
+import SongsContainer from '../songs/SongsContainer';
 
 export const SinglePlaylistPage = () => {
   const { slug } = useParams();
 
   const playlist = useSelector((state) => selectPlaylistById(state, slug));
 
-  // const user = useSelector((state) => selectUserById(state, userId));
-
   if (!playlist) {
     return (
       <section>
+        {/* <Loading />
+        <h2>Loading...</h2> */}
         <h2>Playlist not found!</h2>
       </section>
     );
   }
-  // debugger;
+
   return (
     <section>
       <article className='playlist'>
@@ -34,11 +37,13 @@ export const SinglePlaylistPage = () => {
         />
         <h2>{playlist.name}</h2>
         <p className='playlist-content'>{playlist.description}</p>
-        {/* <PlaylistAuthor userId={playlist.users.data[0]} /> */}
+        {/* <PlaylistAuthor userId={playlist.users.data} playlistId={playlist.id} /> */}
+        <PlaylistAuthor userId={playlist.users.data} />
         <Link to={`/playlists/${playlist.id}/edit`} className='button'>
           Edit Playlist
         </Link>
-        <SongList />
+
+        <SongsContainer />
       </article>
     </section>
   );
