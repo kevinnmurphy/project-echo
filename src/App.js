@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     if (!isAuthenticated) return;
     const { email, name, picture } = user;
-    const existingUser = users.find((user) => user.email === email);
+    const existingUser = users.find((user) => user.name === name);
     if (existingUser) {
       dispatch(currentUserAdd(existingUser.id));
     } else {
