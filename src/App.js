@@ -22,7 +22,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 import {
   selectAllUsers,
-  currentUserAdd,
+  currentUserFindOrAdd,
   addUser,
 } from './features/users/usersSlice';
 
@@ -35,15 +35,17 @@ function App() {
     if (!isAuthenticated) return;
     const { email, name, picture } = user;
     const existingUser = users.find((user) => user.name === name);
+    //unique uid in db from auth
+    // const existingUser = users.find((user) => user.uid === id);
     if (existingUser) {
-      dispatch(currentUserAdd(existingUser.id));
+      dispatch(currentUserFindOrAdd(existingUser.id));
     } else {
       const addCurrentUser = async () => {
         const resultAction = await dispatch(
           addUser({ email, name, picture_url: picture })
         );
         const newUser = unwrapResult(resultAction);
-        dispatch(currentUserAdd(newUser.id));
+        dispatch(currentUserFindOrAdd(newUser.id));
       };
       addCurrentUser();
     }

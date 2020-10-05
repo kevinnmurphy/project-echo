@@ -33,7 +33,7 @@ export const AddPlaylistForm = () => {
       setName('');
       setDescription('');
       // setPic('');
-      setUser_ids('');
+      // setUser_ids('');
     }
   };
 
@@ -84,13 +84,6 @@ export const AddPlaylistForm = () => {
         <InputGroup.Prepend className='edit-input'>
           <InputGroup.Text>User</InputGroup.Text>
         </InputGroup.Prepend>
-        {/* <select id='postAuthor' 
-        value={userId} 
-        onChange={onAuthorChanged}
-        >
-          <option value=''></option>
-          {usersOptions}
-        </select> */}
         <FormControl
           as='select'
           id='playlistUser'

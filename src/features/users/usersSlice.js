@@ -38,7 +38,7 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    currentUserAdd(state, action) {
+    currentUserFindOrAdd(state, action) {
       state.currentUser = action.payload;
     },
   },
@@ -58,7 +58,7 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { currentUserAdd } = usersSlice.actions;
+export const { currentUserFindOrAdd } = usersSlice.actions;
 
 export default usersSlice.reducer;
 

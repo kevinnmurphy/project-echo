@@ -87,13 +87,6 @@ export const EditPlaylistForm = () => {
         <InputGroup.Prepend className='edit-input'>
           <InputGroup.Text>User</InputGroup.Text>
         </InputGroup.Prepend>
-        {/* <select id='postAuthor' 
-        value={userId} 
-        onChange={onAuthorChanged}
-        >
-          <option value=''></option>
-          {usersOptions}
-        </select> */}
         <FormControl
           as='select'
           id='playlistUser'
