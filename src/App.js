@@ -6,16 +6,9 @@ import BootstrapNavbar from './app/Navbar';
 
 import Home from './app/Home';
 import UserProfile from './features/users/UserProfile';
-
-import Loading from './app/Loading';
-import Iframe from './features/iframe/iframe';
-
 import RedirectPage from './app/RedirectPage';
-
+import Loading from './app/Loading';
 import PlaylistRouting from './features/playlists/PlaylistRouting';
-
-import { PlayerPage } from './features/player/PlayerPage';
-import Tracks from './features/spotify/authSong';
 
 import { useAuth0 } from '@auth0/auth0-react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -33,7 +26,7 @@ function App() {
 
   useEffect(() => {
     if (!isAuthenticated) return;
-    const { email, name, picture } = user;
+    const { name, picture } = user;
     const existingUser = users.find((user) => user.name === name);
     //unique uid in db from auth
     // const existingUser = users.find((user) => user.uid === id);
@@ -42,7 +35,7 @@ function App() {
     } else {
       const addCurrentUser = async () => {
         const resultAction = await dispatch(
-          addUser({ email, name, picture_url: picture })
+          addUser({ name, pic_url: picture })
         );
         const newUser = unwrapResult(resultAction);
         dispatch(currentUserFindOrAdd(newUser.id));
@@ -56,25 +49,15 @@ function App() {
       <BootstrapNavbar />
       <div className='App'>
         <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
+          <Route exact path='/' component={Home} />
           <Route path='/redirect' component={RedirectPage} />
-          <Route exact path='/profile'>
-            <UserProfile />
-          </Route>
+          <Route exact path='/profile' component={UserProfile} />
           <Route path='/playlists' component={PlaylistRouting} />
           <React.Fragment>
             <header className='App-header'>
               <Loading />
               <p>Page Not Found.</p>
             </header>
-            <PlayerPage />
-            {/* <Tracks /> */}
-
-            <Iframe />
-            {/* <SongsContainer /> */}
-
             <footer></footer>
           </React.Fragment>
         </Switch>

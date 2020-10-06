@@ -7,12 +7,7 @@ import PlaylistContainer from './PlaylistContainer';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  fetchPlaylists,
-  removePlaylist,
-  selectPlaylistById,
-} from './playlistsSlice';
-import Loading from '../../app/Loading';
+import { fetchPlaylists } from './playlistsSlice';
 
 const PlaylistRouting = () => {
   const dispatch = useDispatch();
