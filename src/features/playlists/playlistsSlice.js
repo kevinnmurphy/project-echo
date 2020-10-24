@@ -39,7 +39,7 @@ export const addPlaylist = createAsyncThunk(
     });
     const playlistData = response.data;
     //attach to user
-    const userId = playlistData.relationships.users.data.map((user) => user.id);
+    // const userId = playlistData.relationships.users.data.map((user) => user.id);
     return {
       id: playlistData.id,
       ...playlistData.attributes,
