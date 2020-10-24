@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Loading from './Loading';
 import Iframe from '../features/iframe/iframe';
 
 import { Button } from 'react-bootstrap';
 
-import chunk from 'lodash/chunk';
+// import chunk from 'lodash/chunk';
 // import { getParamValues } from '../features/spotify/functions';
-import _ from 'lodash';
+// import _ from 'lodash';
 
 function Home(props) {
   const {

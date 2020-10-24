@@ -102,6 +102,8 @@ const playlistsSlice = createSlice({
   },
 });
 
+export const { likeAdded } = playlistsSlice.actions;
+
 export default playlistsSlice.reducer;
 
 export const {
