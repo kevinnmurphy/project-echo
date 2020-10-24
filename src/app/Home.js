@@ -5,7 +5,7 @@ import Iframe from '../features/iframe/iframe';
 import { Button } from 'react-bootstrap';
 
 import chunk from 'lodash/chunk';
-import { getParamValues } from '../features/spotify/functions';
+// import { getParamValues } from '../features/spotify/functions';
 import _ from 'lodash';
 
 function Home(props) {
@@ -22,6 +22,7 @@ function Home(props) {
   return (
     <div>
       <h4>Home</h4>
+
       <Button variant='info' type='submit' onClick={handleLogin}>
         Login to spotify
       </Button>
