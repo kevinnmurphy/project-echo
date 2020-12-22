@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { Form, FormControl, Button, FormLabel } from 'react-bootstrap';
+import { FormControl, Button, FormLabel } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-import { addPlaylist, selectAllPlaylists } from './playlistsSlice';
-import { unwrapResult } from '@reduxjs/toolkit';
+import { addPlaylist } from './playlistsSlice';
+// import { addPlaylist, selectAllPlaylists } from './playlistsSlice';
+// import { unwrapResult } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 import { selectAllUsers } from '../users/usersSlice';
 
@@ -17,7 +18,7 @@ export const AddPlaylistForm = () => {
   );
   const [user_ids, setUser_ids] = useState('');
 
-  const [addrequestStatus, setAddRequestStatus] = useState('idle');
+  // const [addrequestStatus, setAddRequestStatus] = useState('idle');
 
   const dispatch = useDispatch();
   const users = useSelector(selectAllUsers);

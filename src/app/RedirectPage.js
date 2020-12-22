@@ -5,7 +5,8 @@ import { getParamValues } from '../features/spotify/functions';
 export default class RedirectPage extends React.Component {
   debugger;
   componentDidMount() {
-    const { setExpiryTime, history, location } = this.props;
+    // const { setExpiryTime, history, location } = this.props;
+    const { history, location } = this.props;
     try {
       if (_.isEmpty(location.hash)) {
         return history.push('/');

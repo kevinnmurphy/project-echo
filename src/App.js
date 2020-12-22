@@ -42,7 +42,7 @@ function App() {
       };
       addCurrentUser();
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, user, users, dispatch]);
 
   return (
     <Router>

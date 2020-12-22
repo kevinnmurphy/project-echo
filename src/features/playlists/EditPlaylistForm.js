@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
-import { Form, FormControl, Button, FormLabel } from 'react-bootstrap';
+import { FormControl, Button, FormLabel } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 import { editPlaylist, selectPlaylistById } from './playlistsSlice';

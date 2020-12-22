@@ -1,24 +1,38 @@
-import React, { useState, useSelector } from 'react';
-import { Form, FormControl } from 'react-bootstrap';
+import React from 'react';
 
-function PlaylistSearch({ query, setQuery }) {
-  const handleOnChange = (event) => {
-    setQuery(event.target.value);
-  };
+// import SpotifyWebApi from '../spotify/spotify-web-api';
+import { spotifyApi, setAuthHeader } from '../spotify/functions';
 
-  return (
-    <div>
-      <Form inline>
-        <FormControl
-          className='mr-sm-2'
-          type='text'
-          placeholder='Search'
-          value={query}
-          onChange={handleOnChange}
-        />
-      </Form>
-    </div>
+// export const getTrackById = () => {
+//   let track = '';
+//   spotifyApi.getTrack('7ouMYWpwJ422jRcDASZB7P').then(
+//     function (data) {
+//       track = data;
+//       console.log('Track Info', data);
+//     },
+//     function (err) {
+//       console.error(err);
+//     }
+//   );
+//   return <section>{track}</section>;
+// };
+
+export const SongSearch = (query = 'mood') => {
+  setAuthHeader();
+  let track = '';
+  spotifyApi.search(`${query}`, ['track']).then(
+    function (data) {
+      track = data;
+      console.log('Track Info', data);
+    },
+    function (err) {
+      console.error(err);
+    }
   );
-}
+  return <section>{track}</section>;
+};
 
-export default PlaylistSearch;
+// Knights of Cydonia
+// 7ouMYWpwJ422jRcDASZB7P
+// Mood
+// 3tjFYV6RSFtuktYl3ZtYcq

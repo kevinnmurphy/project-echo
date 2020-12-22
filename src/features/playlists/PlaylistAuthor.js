@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectUserById, selectUsersByPlaylist } from '../users/usersSlice';
+import { selectUserById } from '../users/usersSlice';
 
 const PlaylistAuthor = ({ userId, playlistId }) => {
   const author = useSelector(

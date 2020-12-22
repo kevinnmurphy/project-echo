@@ -1,5 +1,6 @@
 export const echo = {
-  baseURL: 'http://localhost:3001',
+  // baseURL: 'http://localhost:3001',
+  baseURL: 'https://project-echo-api.herokuapp.com/',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',

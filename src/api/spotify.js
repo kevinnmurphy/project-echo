@@ -15,3 +15,5 @@ export const authEndpoint = 'https://accounts.spotify.com/authorize';
 export default spotify;
 
 export const spotify_api = 'https://api.spotify.com/v1';
+
+// ['Authorization'] = `Bearer ${params.access_token}`;

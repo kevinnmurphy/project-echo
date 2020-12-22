@@ -5,7 +5,7 @@ import PlaylistSearch from './PlaylistSearch';
 import AddPlaylistForm from './AddPlaylistForm';
 import { Accordion, Card } from 'react-bootstrap';
 
-import SongsContainer from '../songs/SongsContainer';
+// import SongsContainer from '../songs/SongsContainer';
 
 const PlaylistContainer = (props) => {
   const [query, setQuery] = useState('');

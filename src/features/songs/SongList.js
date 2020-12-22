@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
 import SongCard from './SongCard';
 import CardDeck from 'react-bootstrap/CardDeck';
-import { selectAllSongs, fetchSongs, removeSong } from './songsSlice';
-import Loading from '../../app/Loading';
+// import { selectAllSongs, fetchSongs, removeSong } from './songsSlice';
+// import Loading from '../../app/Loading';
 
-import songsSlice from './songsSlice';
+// import songsSlice from './songsSlice';
 
 import { songPlaylistObj } from '../../db/songs';
 
@@ -20,9 +20,8 @@ function msToTime(duration) {
 }
 
 export const SongList = ({ query }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const songs = useSelector((state) => selectAllSongs(state));
-
   const songs = [songPlaylistObj];
 
   // const songStatus = useSelector((state) => state.songs.status);
@@ -32,7 +31,7 @@ export const SongList = ({ query }) => {
   //   }
   // }, [songStatus, dispatch]);
 
-  const error = useSelector((state) => state.songs.error);
+  // const error = useSelector((state) => state.songs.error);
 
   // const deleteSong = (id) => {
   //   dispatch(songsSlice.removeSong(id));
@@ -50,7 +49,7 @@ export const SongList = ({ query }) => {
     />
   ));
 
-  let content;
+  // let content;
 
   // if (songStatus === 'loading') {
   //   content = (
@@ -67,19 +66,9 @@ export const SongList = ({ query }) => {
 
   // return <CardDeck className='song-collection'>{content}</CardDeck>;
   return (
-    // <CardDeck
-    //   className='song-collection'
-    //   style={{
-    //     display: 'flex',
-    //     flexDirection: 'row',
-    //     justifyContent: 'center',
-    //     flexFlow: 'column',
-    //     margin: 'none',
-    //   }}
-    // >
-    //   {renderSonglists}
-    // </CardDeck>
-    <SortableComponent songs={renderSonglists} />
+    <CardDeck className='song-collection'>
+      <SortableComponent songs={renderSonglists} />
+    </CardDeck>
   );
 };
 
