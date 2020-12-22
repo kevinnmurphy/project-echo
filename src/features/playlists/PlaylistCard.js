@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from 'react-bootstrap/card';
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/button';
 import { Link, useHistory } from 'react-router-dom';
 // import parsejson from date-fns
