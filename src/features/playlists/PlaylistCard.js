@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/button';
+import Button from 'react-bootstrap/Button';
 import { Link, useHistory } from 'react-router-dom';
 // import parsejson from date-fns
 import { formatRelative } from 'date-fns';
