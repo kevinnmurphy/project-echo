@@ -1,5 +1,5 @@
 /* global module */
-'use strict';
+// 'use strict';
 
 /**
  * Class representing the API

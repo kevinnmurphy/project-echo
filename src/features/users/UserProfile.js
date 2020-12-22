@@ -1,8 +1,8 @@
 import React from 'react';
 // import { useSelector } from 'react-redux/lib/hooks/useSelector';
 import UserPic from './UserPic';
-import user from './usersSlice';
-import pic from '../../img/profile.jpg';
+// import user from './usersSlice';
+// import pic from '../../img/profile.jpg';
 
 import { useAuth0 } from '@auth0/auth0-react';
 
