@@ -22,7 +22,8 @@ function msToTime(duration) {
 export const SongList = ({ query }) => {
   // const dispatch = useDispatch();
   // const songs = useSelector((state) => selectAllSongs(state));
-  // const songs = [songPlaylistObj];
+  const songPlaylistObj = {};
+  const songs = [songPlaylistObj];
 
   // const songStatus = useSelector((state) => state.songs.status);
   // useEffect(() => {
