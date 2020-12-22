@@ -7,7 +7,7 @@ import CardDeck from 'react-bootstrap/CardDeck';
 
 // import songsSlice from './songsSlice';
 
-import { songPlaylistObj } from '../../db/songs';
+// import { songPlaylistObj } from '../../db/songs';
 
 import SortableComponent from './Sort';
 
@@ -22,7 +22,7 @@ function msToTime(duration) {
 export const SongList = ({ query }) => {
   // const dispatch = useDispatch();
   // const songs = useSelector((state) => selectAllSongs(state));
-  const songs = [songPlaylistObj];
+  // const songs = [songPlaylistObj];
 
   // const songStatus = useSelector((state) => state.songs.status);
   // useEffect(() => {
