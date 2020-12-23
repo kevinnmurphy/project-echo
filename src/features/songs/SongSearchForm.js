@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, FormControl } from 'react-bootstrap';
 
 function SongSearchForm({ query, setQuery }) {

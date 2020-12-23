@@ -1,17 +1,16 @@
-import React from 'react';
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 import SongList from './SongList';
 // import spotify, { spotify_api } from '../../api/spotify';
 import SongCard from './SongCard';
 
-// import { SongSearch } from './SongSearch';
+import { SongSearch } from './SongSearch';
 
 import SearchForm from '../spotify/SearchForm';
 // import SearchResult from '../spotify/SearchResult';
 
 const SongsContainer = (props) => {
-  // const [query, setQuery] = useState('');
-  // const [songs, setSongs] = useState([]);
+  const [query] = useState('');
+  const [songs] = useState([]);
   // const [image, setImage] = useState(null);
 
   // useEffect(
@@ -41,8 +40,8 @@ const SongsContainer = (props) => {
   return (
     <div>
       <SongList />
-      {/* <SongList songs={songs} /> */}
-      {/* <SongSearch query={query} /> */}
+      <SongList songs={songs} />
+      <SongSearch query={query} />
       <SongCard />
       <SearchForm />
       {/* <SearchForm handleSearch={handleSearch} /> */}
