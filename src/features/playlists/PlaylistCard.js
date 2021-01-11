@@ -25,6 +25,7 @@ function PlaylistCard({
   return (
     <Card
       className='playlist-card button muted-button'
+      key={id}
       style={{ width: '18rem' }}
       onClick={handleCardClick}
     >
@@ -36,11 +37,12 @@ function PlaylistCard({
         View Playlist
       </Link>
 
-      {/* <Button className='save-btn'>Save Playlist</Button> */}
       <Button className='delete-btn' onClick={deletePlaylist}>
         X
       </Button>
-      <Card.Footer>Updated {parseDate}</Card.Footer>
+      <Card.Footer>
+        <small className='text-muted'>Updated {parseDate}</small>
+      </Card.Footer>
     </Card>
   );
 }

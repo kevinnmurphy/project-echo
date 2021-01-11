@@ -37,8 +37,9 @@ export const SinglePlaylistPage = () => {
         />
         <h2>{playlist.name}</h2>
         <p className='playlist-content'>{playlist.description}</p>
-        {/* <PlaylistAuthor userId={playlist.users.data} playlistId={playlist.id} /> */}
-        <PlaylistAuthor userId={playlist.users.data} />
+        <PlaylistAuthor userId={playlist.users.data} playlistId={playlist.id} />
+
+        {/* <PlaylistAuthor userId={playlist.users.data} /> */}
         <Link to={`/playlists/${playlist.id}/edit`} className='button'>
           Edit Playlist
         </Link>
